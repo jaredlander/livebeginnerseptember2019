@@ -57,3 +57,12 @@ list4 %>% map_chr(class)
 
 list4 %>% map_if(is.integer, mean)
 list4 %>% map_if(negate(is.integer), mean)
+
+NA
+NaN
+NA
+
+simple <- c(1, NA, 3, 4)
+simple
+mean(simple)
+mean(simple, na.rm=TRUE)
