@@ -48,3 +48,72 @@ diamonds %>% filter(cut != 'Fair')
 diamonds %>% filter(cut == 'Ideal' | cut == 'Premium')
 diamonds %>% filter(cut == 'Ideal' | cut == 'Premium' | cut == 'Good')
 diamonds %>% filter(cut %in% c('Ideal', 'Premium', 'Good'))
+
+
+diamonds %>% slice(4)
+diamonds %>% slice(2:7)
+diamonds %>% slice(c(2, 9, 14))
+
+diamonds %>% mutate(price / carat)
+326/0.23
+
+diamonds %>% mutate(Ratio=price / carat)
+diamonds
+
+diamonds2 <- diamonds %>% mutate(Ratio=price / carat)
+diamonds2
+diamonds
+
+diamonds %>% 
+    mutate(Ratio = price/carat) %>% 
+    mutate(Double=Ratio*2)
+
+diamonds %>% 
+    mutate(Ratio=price/carat, Double=Ratio*2)
+
+diamonds %>% summarize(mean(price))
+diamonds %>% summarize(AvgPrice=mean(price))
+diamonds %>% summarize(AvgPrice=mean(price), MedianSize=median(carat))
+summarise
+summarize
+
+diamonds %>% filter(cut == 'Ideal') %>% summarize(AvgPrice=mean(price))
+diamonds %>% filter(cut == 'Premium') %>% summarize(AvgPrice=mean(price))
+
+diamonds %>% 
+    group_by(cut)
+
+diamonds %>% 
+    group_by(cut) %>% 
+    summarize(AvgPrice = mean(price))
+
+diamonds %>% 
+    group_by(cut, color) %>% 
+    summarize(AvgPrice=mean(price), MedianSize=median(carat))
+
+# calculate the median price and average carat size
+# for diamonds greater than 1 carat
+# for each cut of diamond
+# sort by the median price (you have not seen this yet)
+
+diamonds %>% 
+    filter(carat > 1) %>% 
+    group_by(cut) %>% 
+    summarize(MedianPrice=median(price), AvgSize=mean(carat)) %>% 
+    arrange(-MedianPrice)
+
+arrange(
+    summarize(
+        group_by(
+            filter(
+                diamonds, carat > 1
+            ), cut
+        ), MedianPrice=median(price), AvgSize=mean(carat)
+    ), -MedianPrice
+)
+
+diamonds %>% 
+    group_by(cut) %>% 
+    summarize(n())
+
+diamonds %>% count(cut)
