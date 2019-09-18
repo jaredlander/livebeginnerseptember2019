@@ -147,7 +147,6 @@ The data are stored in a [GitHub repo](https://github.com/jaredlander/coursedata
 source('prep/download_data.r')
 ```
 
-
 # All Done
 
 That's everything. You should now do all of your work for this class in this project.
