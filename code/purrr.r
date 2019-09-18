@@ -49,3 +49,11 @@ list4 %>% map_dbl(sum) %>% mean()
 list4 %>% map(sum) %>% mean()
 # list4 %>% map(sum) %>% reduce(roll)
 
+list4 %>% map_int(sum)
+list4 %>% map(class)
+list4 %>% map_int(class)
+list4 %>% map_dbl(class)
+list4 %>% map_chr(class)
+
+list4 %>% map_if(is.integer, mean)
+list4 %>% map_if(negate(is.integer), mean)
